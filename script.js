@@ -21,6 +21,25 @@ const savedTheme = localStorage.getItem('prefers-dark');
 const prefersDark = savedTheme !== null ? savedTheme === '1' : window.matchMedia('(prefers-color-scheme: dark)').matches;
 setTheme(prefersDark);
 
+// Contact Modal
+const contactBtn = document.getElementById('contact-btn');
+const contactModal = document.getElementById('contact-modal');
+const closeModal = document.getElementById('close-modal');
+
+contactBtn.addEventListener('click', () => {
+  contactModal.classList.add('active');
+});
+
+closeModal.addEventListener('click', () => {
+  contactModal.classList.remove('active');
+});
+
+contactModal.addEventListener('click', (e) => {
+  if (e.target === contactModal) {
+    contactModal.classList.remove('active');
+  }
+});
+
 // Smooth scroll for nav links
 document.querySelectorAll('a[href^="#"]').forEach(link => {
   link.addEventListener('click', e => {
